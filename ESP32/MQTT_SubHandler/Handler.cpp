@@ -20,6 +20,8 @@
 
 #include <xnm/net_helpers.h>
 
+#include "esp_sntp.h"
+
 namespace Xasin {
 namespace MQTT {
 
@@ -120,7 +122,7 @@ void Handler::start_wifi(const char *SSID, const char *PSWD, int psMode) {
 			esp_wifi_set_max_tx_power(50);
 			sta_cfg->listen_interval = 5;
 	}
-	ESP_ERROR_CHECK( esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_cfg) );
+	ESP_ERROR_CHECK( esp_wifi_set_config(WIFI_IF_STA, &wifi_cfg) );
 	if(psMode >= 1) {
 		ESP_ERROR_CHECK( esp_wifi_set_ps(WIFI_PS_MAX_MODEM));
 	}
